@@ -23,6 +23,7 @@
 
 #include <signal.h>
 #include <ctype.h>
+#include <unistd.h>
 #include "bio.h"
 #include "keymeta.h"
 
@@ -1365,6 +1366,8 @@ void delGenericCommand(client *c, int lazy) {
 }
 
 void delCommand(client *c) {
+    usleep(500000);
+
     delGenericCommand(c,server.lazyfree_lazy_user_del);
 }
 
