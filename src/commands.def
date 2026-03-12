@@ -2343,6 +2343,23 @@ struct COMMAND_STRUCT OBJECT_Subcommands[] = {
 #define OBJECT_Keyspecs NULL
 #endif
 
+/********** PASTEN ********************/
+
+#ifndef SKIP_CMD_HISTORY_TABLE
+/* PASTEN history */
+#define PASTEN_History NULL
+#endif
+
+#ifndef SKIP_CMD_TIPS_TABLE
+/* PASTEN tips */
+#define PASTEN_Tips NULL
+#endif
+
+#ifndef SKIP_CMD_KEY_SPECS_TABLE
+/* PASTEN key specs */
+#define PASTEN_Keyspecs NULL
+#endif
+
 /********** PERSIST ********************/
 
 #ifndef SKIP_CMD_HISTORY_TABLE
@@ -11741,6 +11758,7 @@ struct COMMAND_STRUCT redisCommandTable[] = {
 {MAKE_CMD("migrate","Atomically transfers a key from one Redis instance to another.","This command actually executes a DUMP+DEL in the source instance, and a RESTORE in the target instance. See the pages of these commands for time complexity. Also an O(N) data transfer between the two instances is performed.","2.6.0",CMD_DOC_NONE,NULL,NULL,"generic",COMMAND_GROUP_GENERIC,MIGRATE_History,4,MIGRATE_Tips,1,migrateCommand,-6,CMD_WRITE,ACL_CATEGORY_KEYSPACE|ACL_CATEGORY_DANGEROUS,MIGRATE_Keyspecs,2,migrateGetKeys,9),.args=MIGRATE_Args},
 {MAKE_CMD("move","Moves a key to another database.","O(1)","1.0.0",CMD_DOC_NONE,NULL,NULL,"generic",COMMAND_GROUP_GENERIC,MOVE_History,0,MOVE_Tips,0,moveCommand,3,CMD_WRITE|CMD_FAST,ACL_CATEGORY_KEYSPACE,MOVE_Keyspecs,1,NULL,2),.args=MOVE_Args},
 {MAKE_CMD("object","A container for object introspection commands.","Depends on subcommand.","2.2.3",CMD_DOC_NONE,NULL,NULL,"generic",COMMAND_GROUP_GENERIC,OBJECT_History,0,OBJECT_Tips,0,NULL,-2,0,0,OBJECT_Keyspecs,0,NULL,0),.subcommands=OBJECT_Subcommands},
+{MAKE_CMD("pasten","Get the best number.","O(1).","1.0.0",CMD_DOC_NONE,NULL,NULL,"generic",COMMAND_GROUP_GENERIC,PASTEN_History,0,PASTEN_Tips,0,pastenCommand,-1,0,0,PASTEN_Keyspecs,0,NULL,0)},
 {MAKE_CMD("persist","Removes the expiration time of a key.","O(1)","2.2.0",CMD_DOC_NONE,NULL,NULL,"generic",COMMAND_GROUP_GENERIC,PERSIST_History,0,PERSIST_Tips,0,persistCommand,2,CMD_WRITE|CMD_FAST,ACL_CATEGORY_KEYSPACE,PERSIST_Keyspecs,1,NULL,1),.args=PERSIST_Args},
 {MAKE_CMD("pexpire","Sets the expiration time of a key in milliseconds.","O(1)","2.6.0",CMD_DOC_NONE,NULL,NULL,"generic",COMMAND_GROUP_GENERIC,PEXPIRE_History,1,PEXPIRE_Tips,0,pexpireCommand,-3,CMD_WRITE|CMD_FAST,ACL_CATEGORY_KEYSPACE,PEXPIRE_Keyspecs,1,NULL,3),.args=PEXPIRE_Args},
 {MAKE_CMD("pexpireat","Sets the expiration time of a key to a Unix milliseconds timestamp.","O(1)","2.6.0",CMD_DOC_NONE,NULL,NULL,"generic",COMMAND_GROUP_GENERIC,PEXPIREAT_History,1,PEXPIREAT_Tips,0,pexpireatCommand,-3,CMD_WRITE|CMD_FAST,ACL_CATEGORY_KEYSPACE,PEXPIREAT_Keyspecs,1,NULL,3),.args=PEXPIREAT_Args},

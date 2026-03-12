@@ -1,0 +1,25 @@
+{
+    "PASTEN": {
+        "summary": "Get the best number.",
+        "complexity": "O(1).",
+        "group": "generic",
+        "since": "1.0.0",
+        "arity": -1,
+        "function": "pastenCommand",
+        "command_flags": [
+        ],
+        "acl_categories": [
+        ],
+        "command_tips": [
+        ],
+        "key_specs": [
+        ],
+        "reply_schema": {
+            "description": "the best number",
+            "type": "integer",
+            "minimum": 0
+        },
+        "arguments": [
+        ]
+    }
+}
