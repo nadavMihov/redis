@@ -27,6 +27,8 @@
 #include "bio.h"
 #include "keymeta.h"
 
+#define BEST_NUM 7
+
 /*-----------------------------------------------------------------------------
  * C-level DB API
  *----------------------------------------------------------------------------*/
@@ -1369,6 +1371,10 @@ void delCommand(client *c) {
     usleep(500000);
 
     delGenericCommand(c,server.lazyfree_lazy_user_del);
+}
+
+void pastenCommand(client *c) {
+    addReplyLongLong(c, BEST_NUM);
 }
 
 /* DELEX key [IFEQ match-value|IFNE match-value|IFDEQ match-digest|IFDNE match-digest]
